@@ -12,7 +12,6 @@
     <h1>Formularz</h1>
     <div class="container">
         <form action="#" th:action="@{/student/save}" th:object="${studentForm}" method="post">
-            <button type="submit" id="submitButton">Save</button>
             <h2>Student</h2>
             <div class="form-group">
                 <label th:for="firstName">First Name</label>
@@ -26,6 +25,7 @@
                 <label th:for="indexNumber">Index Number</label>
                 <input type="text" name="indexNumber" th:value="${studentForm.indexNumber}" />
             </div>
+            <button type="submit" id="submitButton" class="btn btn-primary">Save</button>
         </form>
     </div>
 </body>

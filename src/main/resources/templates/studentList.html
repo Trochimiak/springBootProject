@@ -30,13 +30,13 @@
                 <td><span th:text="${student.firstName}"/></td>
                 <td><span th:text="${student.lastName}"/></td>
                 <td><span th:text="${student.indexNumber}"/></td>
-                <td><a th:href="@{/student/update/{id}(id=${student.id})}"/>EDIT</td>
-                <td><a th:href="@{/student/delete/{id}(id=${student.id})}"/>DELETE</td>
+                <td><a th:href="@{/student/update/{id}(id=${student.id})}"/><button type="button" class="btn btn-outline-primary">EDIT</button></td>
+                <td><a th:href="@{/student/delete/{id}(id=${student.id})}"/><button type="button" class="btn btn-outline-primary">DELETE</button></td>
             </tr>
         </tbody>
     </table>
     <form action="#" th:action="@{/student/add}" th:object="${studentList}" method="get">
-        <button type="submit" id="submitButton">Add Student</button>
+        <button type="submit" id="submitButton" class="btn btn-primary">Add Student</button>
     </form>
 </div>
 </body>

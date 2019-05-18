@@ -1,11 +1,10 @@
 package com.app.service;
 
-import com.app.dao.StudentDao;
+import com.app.dao.interfaces.StudentDao;
 import com.app.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

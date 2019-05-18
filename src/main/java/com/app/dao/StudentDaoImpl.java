@@ -1,5 +1,6 @@
 package com.app.dao;
 
+import com.app.dao.interfaces.StudentDao;
 import com.app.model.Student;
 import org.springframework.stereotype.Repository;
 

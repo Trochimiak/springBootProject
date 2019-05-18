@@ -1,4 +1,4 @@
-package com.app.dao;
+package com.app.dao.interfaces;
 
 import com.app.model.Student;
 import java.util.List;

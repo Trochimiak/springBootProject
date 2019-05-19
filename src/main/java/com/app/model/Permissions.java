@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-public class Privilege {
+public class Permissions {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,10 +12,10 @@ public class Privilege {
 
     private String name;
 
-    @ManyToMany(mappedBy = "privileges")
+    @ManyToMany(mappedBy = "permissions")
     private Collection<Role> roles;
 
-    public Privilege() {
+    public Permissions() {
 
     }
 

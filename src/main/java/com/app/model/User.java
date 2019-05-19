@@ -19,6 +19,8 @@ public class User {
     @Column(name = "locked")
     private boolean locked;
 
+    //TODO add more columns on entity
+
     @ManyToMany
     @JoinTable(
             name = "userRoles",

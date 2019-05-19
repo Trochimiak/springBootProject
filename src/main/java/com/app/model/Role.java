@@ -17,12 +17,12 @@ public class Role {
 
     @ManyToMany
     @JoinTable(
-            name = "roles_privileges",
+            name = "roles_permissions",
             joinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "privilege_id", referencedColumnName = "id"))
-    private Collection<Privilege> privileges;
+    private Collection<Permissions> permissions;
 
     public Role() {
 
@@ -52,11 +52,11 @@ public class Role {
         this.users = users;
     }
 
-    public Collection<Privilege> getPrivileges() {
-        return privileges;
+    public Collection<Permissions> getPermissions() {
+        return permissions;
     }
 
-    public void setPrivileges(Collection<Privilege> privileges) {
-        this.privileges = privileges;
+    public void setPermissions(Collection<Permissions> permissions) {
+        this.permissions = permissions;
     }
 }

@@ -4,40 +4,51 @@
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{/css/structure.css}">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Student List</title>
-    <div th:replace="fragments/header :: header"></div>
+    <!--<div th:replace="fragments/header :: header"></div>-->
 </head>
-<body>
-<div class="container">
-    <h2>Student List</h2>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th scope="row">Student ID</th>
-            <th scope="row">First Name</th>
-            <th scope="row">Last Name</th>
-            <th scope="row">Index Number</th>
-            <th scope="row">Edit Student</th>
-            <th scope="row">Delete Student</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr th:each="student : ${studentList}">
-                <td><span th:text="${student.id}"/></td>
-                <td><span th:text="${student.firstName}"/></td>
-                <td><span th:text="${student.lastName}"/></td>
-                <td><span th:text="${student.indexNumber}"/></td>
-                <td><a th:href="@{/student/update/{id}(id=${student.id})}"/><button type="button" class="btn btn-outline-primary">EDIT</button></td>
-                <td><a th:href="@{/student/delete/{id}(id=${student.id})}"/><button type="button" class="btn btn-outline-primary">DELETE</button></td>
+<body class="admin">
+    <div class="admin__header" th:insert="fragments/header :: header"></div>
+    <div class="admin__nav" th:insert="fragments/sidebarMenu :: sidebarMenu"></div>
+    <div class="container admin__main">
+        <h2>Student List</h2>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="row" th:text="#{entity.student.id}"></th>
+                <th scope="row" th:text="#{entity.student.firstname}"></th>
+                <th scope="row" th:text="#{entity.student.lastname}"></th>
+                <th scope="row" th:text="#{entity.student.indexnumber}"></th>
+                <th scope="row" th:text="#{views.button.edit}"></th>
+                <th scope="row" th:text="#{views.button.delete}"></th>
             </tr>
-        </tbody>
-    </table>
-    <form action="#" th:action="@{/student/add}" th:object="${studentList}" method="get">
-        <button type="submit" id="submitButton" class="btn btn-primary">Add Student</button>
-    </form>
-</div>
+            </thead>
+            <tbody>
+                <tr th:each="student : ${studentList}">
+                    <td><span th:text="${student.id}"/></td>
+                    <td><span th:text="${student.firstName}"/></td>
+                    <td><span th:text="${student.lastName}"/></td>
+                    <td><span th:text="${student.indexNumber}"/></td>
+                    <td>
+                        <a th:href="@{/student/update/{id}(id=${student.id})}"/>
+                        <button type="button" class="btn btn-outline-primary" th:text="#{views.button.edit}"></button>
+                    </td>
+                    <td>
+                        <a th:href="@{/student/delete/{id}(id=${student.id})}"/>
+                        <button type="button" class="btn btn-outline-primary" th:text="#{views.button.delete}"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <form action="#" th:action="@{/student/add}" th:object="${studentList}" method="get">
+            <button type="submit" id="submitButton" class="btn btn-primary" th:text="#{views.button.add}"></button>
+        </form>
+    </div>
 </body>
 </html>

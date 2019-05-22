@@ -4,28 +4,33 @@
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{/css/structure.css}">
     <meta charset="UTF-8">
     <title>Student</title>
-    <div th:replace="fragments/header :: header"></div>
+    <!--<div th:replace="fragments/header :: header"></div>-->
 </head>
-<body>
-    <h1>Formularz</h1>
-    <div class="container">
+<body class="admin">
+    <div class="admin__header" th:insert="fragments/header :: header"></div>
+    <div class="admin__nav" th:insert="fragments/sidebarMenu :: sidebarMenu"></div>
+
+    <div class="container admin__main">
         <form action="#" th:action="@{/student/save}" th:object="${studentForm}" method="post">
             <h2>Student</h2>
             <div class="form-group">
-                <label th:for="firstName">First Name</label>
-                <input type="text" name="firstName" th:value="${studentForm.firstName}" />
+                <label th:for="firstName" th:text="#{entity.student.firstname}"></label>
+                <input type="text" name="firstName" th:value="${studentForm.firstName}"/>
             </div>
             <div class="form-group">
-                <label th:for="lastName">Last Name</label>
-                <input type="text" name="lastName" th:value="${studentForm.lastName}" />
+                <label th:for="lastName" th:text="#{entity.student.lastname}"></label>
+                <input type="text" name="lastName" th:value="${studentForm.lastName}"/>
             </div>
             <div class="form-group">
-                <label th:for="indexNumber">Index Number</label>
-                <input type="text" name="indexNumber" th:value="${studentForm.indexNumber}" />
+                <label th:for="indexNumber" th:text="#{entity.student.indexnumber}"></label>
+                <input type="text" name="indexNumber" th:value="${studentForm.indexNumber}"/>
             </div>
-            <button type="submit" id="submitButton" class="btn btn-primary">Save</button>
+            <button type="submit" id="submitButton" class="btn btn-primary" th:text="#{views.button.save}"></button>
         </form>
     </div>
 </body>

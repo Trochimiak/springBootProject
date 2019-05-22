@@ -16,20 +16,22 @@
     <div id="formContent">
      <div class="alert alert-dismissible alert-danger" th:if="${param.error}">
          <a href="/login" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-         Invalid username and password.
+         <p th:text="#{errors.invalid.usernameandpassword}"></p>
     </div>
     <div class="alert alert-dismissible alert-danger" th:if="${param.logout}">
         <a href="/login" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        You have been logged out.
+        <p th:text="#{errors.logout}"></p>
     </div>
     <form class="form-horizontal" th:action="@{/login}" method="post">
         <div>
-            <label> Login (login: root)
+            <label>
+                <h2>Login (login: root)</h2>
                 <input class="form-control fadeInDown second" type="text" name="username" placeholder="login"/>
             </label>
         </div>
         <div>
-            <label> Password (hasło: root)
+            <label>
+                <h2>Password (hasło: root)</h2>
                 <input class="form-control fadeInDown third" type="password" name="password" placeholder="password"/>
             </label>
         </div>

@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>header</title>
+    <title>Header</title>
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{/css/structure.css}">
 </head>
 <body>
-    <div th:fragment="header">
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#">Projekt</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <div th:fragment="header" class="admin__header">
+        <nav>
+            <a th:text="#{settings.general.projectname}"></a>
+            <button>
+                <span></span>
             </button>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" href="/">Home</a> </li>
-                    <li class="nav-item"><a class="nav-link" href="/student/">Student</a> </li>
+            <div>
+                <ul>
+                    <li>
+                        <a href="/" th:text="#{views.menu.home}"></a>
+                    </li>
+                    <li>
+                        <a href="/student/" th:text="#{views.menu.student}"></a>
+                    </li>
                 </ul>
             </div>
         </nav>

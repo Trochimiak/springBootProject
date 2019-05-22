@@ -5,17 +5,21 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{/css/structure.css}">
     <meta charset="UTF-8">
     <title>Strona startowa Paweł Trochimiak</title>
-    <div th:replace="fragments/header :: header"></div>
 </head>
 
-<body>
-    <h1>Spring Boot Project</h1>
-    <p>Paweł Trochimiak</p>
+<body class="admin">
+    <div class="admin__header" th:insert="fragments/header :: header"></div>
+    <div class="admin__nav" th:insert="fragments/sidebarMenu :: sidebarMenu"></div>
 
-    <form action="#" th:action="@{/student/}" method="get">
-        <button type="submit" id="submitButton" class="btn-primary">Start</button>
-    </form>
+    <div class="admin__main">
+        <form th:action="@{/student/}" method="get">
+            <button type="submit" id="submitButton" class="btn-primary" th:text="#{views.button.start}"></button>
+        </form>
+    </div>
 </body>
 </html>

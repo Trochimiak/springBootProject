@@ -40,6 +40,7 @@ public class StudentDaoImpl implements StudentDao {
         Student updateStudent = getStudent(student.getId());
         updateStudent.setFirstName(student.getFirstName());
         updateStudent.setLastName(student.getLastName());
+        updateStudent.setIndexNumber(student.getIndexNumber());
         entityManager.flush();
     }
 

@@ -52,7 +52,6 @@ public class StartController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView saveStudent(@ModelAttribute("studentForm") Student student) {
-        //TODO problem with getID on "studentForm" template
         if (student.getId() != null) {
             studentService.updateStudent(student);
         } else {

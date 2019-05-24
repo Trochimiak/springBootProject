@@ -2,6 +2,8 @@ package com.app.service;
 
 import com.app.dao.interfaces.StudentDao;
 import com.app.model.Student;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,8 @@ import java.util.List;
 
 @Service
 public class StudentServiceImpl implements StudentService {
+
+    private static final Logger logger = LoggerFactory.getLogger(StudentServiceImpl.class);
 
     @Autowired
     private StudentDao studentDao;
@@ -35,6 +39,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void deleteStudent(Long id) {
+        logger.info("Student deleted: " + getStudent(id).toString());
         studentDao.deleteStudent(id);
     }
 

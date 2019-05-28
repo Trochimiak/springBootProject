@@ -1,6 +1,6 @@
 package com.app.dao;
 
-import com.app.dao.interfaces.StudentDao;
+import com.app.dao.interfaces.CrudDao;
 import com.app.model.Student;
 import org.springframework.stereotype.Repository;
 
@@ -12,32 +12,32 @@ import java.util.List;
 
 @Transactional
 @Repository
-public class StudentDaoImpl implements StudentDao {
+public class StudentDaoImpl implements CrudDao<Student, Long> {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Student> getAllStudents() {
+    public List<Student> getAll() {
         String query = "SELECT st FROM com.app.model.Student as st";
         return entityManager.createQuery(query).getResultList();
     }
 
     @Override
-    public Student getStudent(Long id) {
+    public Student getById(Long id) {
         return entityManager.find(Student.class, id);
     }
 
     @Override
-    public void addStudent(Student student) {
+    public void add(Student student) {
         entityManager.persist(student);
 
     }
 
     @Override
-    public void updateStudent(Student student) {
-        Student updateStudent = getStudent(student.getId());
+    public void update(Student student) {
+        Student updateStudent = getById(student.getId());
         updateStudent.setFirstName(student.getFirstName());
         updateStudent.setLastName(student.getLastName());
         updateStudent.setIndexNumber(student.getIndexNumber());
@@ -45,7 +45,7 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public void deleteStudent(Long id) {
-        entityManager.remove(getStudent(id));
+    public void delete(Long id) {
+        entityManager.remove(getById(id));
     }
 }

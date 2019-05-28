@@ -1,6 +1,6 @@
 package com.app.service;
 
-import com.app.dao.interfaces.StudentDao;
+import com.app.dao.StudentDaoImpl;
 import com.app.model.Student;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,32 +15,32 @@ public class StudentServiceImpl implements StudentService {
     private static final Logger logger = LoggerFactory.getLogger(StudentServiceImpl.class);
 
     @Autowired
-    private StudentDao studentDao;
+    private StudentDaoImpl studentDao;
 
     @Override
     public List<Student> getAllStudents() {
-        return studentDao.getAllStudents();
+        return studentDao.getAll();
     }
 
     @Override
     public Student getStudent(Long id) {
-        return studentDao.getStudent(id);
+        return studentDao.getById(id);
     }
 
     @Override
     public void addStudent(Student student) {
-        studentDao.addStudent(student);
+        studentDao.add(student);
     }
 
     @Override
     public void updateStudent(Student student) {
-        studentDao.updateStudent(student);
+        studentDao.update(student);
     }
 
     @Override
     public void deleteStudent(Long id) {
         logger.info("Student deleted: " + getStudent(id).toString());
-        studentDao.deleteStudent(id);
+        studentDao.delete(id);
     }
 
     @Override

@@ -18,12 +18,14 @@ public class User {
     private String password;
     @Column(name = "locked")
     private boolean locked;
+    @Column(name = "email")
+    private String email;
 
     //TODO add more columns on entity
 
     @ManyToMany
     @JoinTable(
-            name = "userRoles",
+            name = "users_roles",
             joinColumns = @JoinColumn(
                     name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
@@ -64,6 +66,14 @@ public class User {
 
     public void setLocked(boolean locked) {
         this.locked = locked;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Collection<Role> getRoles() {
